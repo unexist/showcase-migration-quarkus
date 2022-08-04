@@ -1,0 +1,9 @@
+syntax: glob
+
+**/*.iml
+
+target/
+.idea/
+.mvn/
+todo-service-fitnesse/FitNesseRoot/**/*.zip
+todo-service-fitnesse/FitNesseRoot/files/testResults/
