@@ -1,0 +1,12 @@
+syntax: glob
+
+*.iml
+
+target/
+.idea/
+.mvn/
+lib/
+
+deployment/nomad-driver-podman/
+deployment/nomad/plugins/nomad-driver-podman
+deployment/nomad/logs/*.log
