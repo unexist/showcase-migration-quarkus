@@ -23,6 +23,20 @@ public class DueDate {
     @JsonSerialize(using = DateSerializer.class)
     private LocalDate due;
 
+    public DueDate() {}
+
+    /**
+     * Constructor
+     *
+     * @param start
+     * @param due
+     **/
+
+    public DueDate(LocalDate start, LocalDate due) {
+        this.setStart(start);
+        this.setDue(due);
+    }
+
     /**
      * Get start date
      *
