@@ -20,7 +20,7 @@ rest-create:
 	@echo $$JSON_TODO | bash
 
 rest-list:
-	@curl -X 'GET' 'http://localhost:8090/todo' -H 'accept: */*' | jq .
+	@curl -X 'GET' 'http://localhost:8080/todo' -H 'accept: */*' | jq .
 
 # Env
 env-testcontainers:
