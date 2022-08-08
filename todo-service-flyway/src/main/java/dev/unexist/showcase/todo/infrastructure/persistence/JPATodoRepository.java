@@ -18,6 +18,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +30,7 @@ public class JPATodoRepository implements TodoRepository {
     EntityManager entityManager;
 
     @Override
+    @Transactional
     public boolean add(Todo todo) {
         this.entityManager.persist(todo);
 
