@@ -11,21 +11,32 @@
 
 package dev.unexist.showcase.todo.domain.todo;
 
+import org.hibernate.annotations.Columns;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
+@MappedSuperclass
 public class TodoBase {
 
     @NotBlank
+    @Column(name  = "title")
     private String title;
 
     @NotBlank
+    @Column(name = "description")
     private String description;
 
+    @Column(name = "done")
     private Boolean done;
 
     @NotNull
+    @Columns(columns = { @Column(name = "start_date"), @Column(name = "due_date") })
+    @Type(type = "dev.unexist.showcase.todo.infrastructure.persistence.DueDateType" )
     private DueDate dueDate;
 
     /**
