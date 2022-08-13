@@ -73,15 +73,13 @@ public class DueDateType implements UserType {
             throws HibernateException, SQLException
     {
         if (Objects.isNull(value)) {
-            prepStatement.setNull(idx, Types.DATE);
-            prepStatement.setNull(idx + 1, Types.DATE);
+            throw new SQLException("Start and due cannot be null");
         } else {
             DueDate dueDate = (DueDate)value;
 
             prepStatement.setDate(idx, Date.valueOf(dueDate.getStart()));
             prepStatement.setDate(idx + 1, Date.valueOf(dueDate.getDue()));
         }
-
     }
 
     @Override

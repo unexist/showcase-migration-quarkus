@@ -11,8 +11,10 @@
 
 package dev.unexist.showcase.todo.domain.todo;
 
+import dev.unexist.showcase.todo.infrastructure.persistence.DueDateType;
 import org.hibernate.annotations.Columns;
 import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -21,6 +23,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @MappedSuperclass
+@TypeDef(name = "DueDate", typeClass = DueDateType.class, defaultForType = DueDate.class)
 public class TodoBase {
 
     @NotBlank
@@ -36,7 +39,7 @@ public class TodoBase {
 
     @NotNull
     @Columns(columns = { @Column(name = "start_date"), @Column(name = "due_date") })
-    @Type(type = "dev.unexist.showcase.todo.infrastructure.persistence.DueDateType" )
+    @Type(type = "DueDate")
     private DueDate dueDate;
 
     /**
