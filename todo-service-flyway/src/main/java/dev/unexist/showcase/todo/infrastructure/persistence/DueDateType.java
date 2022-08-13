@@ -49,15 +49,18 @@ public class DueDateType implements UserType {
 
     @Override
     public Object nullSafeGet(ResultSet resultSet, String[] names,
-                              SharedSessionContractImplementor session,
-                              Object owner)
+                              SharedSessionContractImplementor session, Object owner)
             throws HibernateException, SQLException
     {
-        LocalDate start = resultSet.getDate(names[1]).toInstant()
+        if (resultSet.wasNull()) {
+            return null;
+        }
+
+        LocalDate start = resultSet.getDate(names[0]).toInstant()
             .atZone(ZoneId.systemDefault())
             .toLocalDate();
 
-        LocalDate due = resultSet.getDate(names[2]).toInstant()
+        LocalDate due = resultSet.getDate(names[1]).toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
 
@@ -65,13 +68,13 @@ public class DueDateType implements UserType {
     }
 
     @Override
-    public void nullSafeSet(PreparedStatement prepStatement, Object value,
-                            int idx, SharedSessionContractImplementor session)
+    public void nullSafeSet(PreparedStatement prepStatement, Object value, int idx,
+                            SharedSessionContractImplementor session)
             throws HibernateException, SQLException
     {
         if (Objects.isNull(value)) {
+            prepStatement.setNull(idx, Types.DATE);
             prepStatement.setNull(idx + 1, Types.DATE);
-            prepStatement.setNull(idx + 2, Types.DATE);
         } else {
             DueDate dueDate = (DueDate)value;
 
