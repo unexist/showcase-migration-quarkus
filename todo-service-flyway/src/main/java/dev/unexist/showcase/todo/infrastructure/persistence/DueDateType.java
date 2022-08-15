@@ -33,7 +33,7 @@ public class DueDateType implements UserType {
     }
 
     @Override
-    public Class returnedClass() {
+    public Class<?> returnedClass() {
         return DueDate.class;
     }
 
