@@ -23,7 +23,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @MappedSuperclass
-@TypeDef(name = "DueDate", typeClass = DueDateType.class, defaultForType = DueDate.class)
+@TypeDef(name = "DueDate", typeClass = DueDateType.class)
 public class TodoBase {
 
     @NotBlank
