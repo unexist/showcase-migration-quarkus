@@ -26,6 +26,7 @@ import java.time.ZoneId;
 import java.util.Objects;
 
 public class DueDateType implements UserType {
+    public static final String NAME = "DueDate";
 
     @Override
     public int[] sqlTypes() {

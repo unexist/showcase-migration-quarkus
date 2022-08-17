@@ -23,7 +23,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @MappedSuperclass
-@TypeDef(name = "DueDate", typeClass = DueDateType.class)
+@TypeDef(name = DueDateType.NAME, typeClass = DueDateType.class)
 public class TodoBase {
 
     @NotBlank
@@ -39,7 +39,7 @@ public class TodoBase {
 
     @NotNull
     @Columns(columns = { @Column(name = "start_date"), @Column(name = "due_date") })
-    @Type(type = "DueDate")
+    @Type(type = DueDateType.NAME)
     private DueDate dueDate;
 
     /**
