@@ -16,10 +16,10 @@ import org.hibernate.annotations.Columns;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 
 @MappedSuperclass
